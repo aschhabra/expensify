@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test should render ExpenseList with expenses 1`] = `
+<div>
+  <p>
+     This is form dashboard
+  </p>
+  <Connect(ExpenseListFilters) />
+  <Connect(ExpenseList) />
+</div>
+`;

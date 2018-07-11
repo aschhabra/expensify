@@ -1,0 +1,27 @@
+node_modules/
+.DS_Store
+\*.log
+# Swap
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]
+
+# Session
+Session.vim
+
+# Temporary
+.netrwhist
+*~
+# Auto-generated tag files
+tags
+
+
+# coverage directory used by tools like istanbul
+coverage
+
+#nyc test coverage
+.nyc_output
+
+# optional npm cache directory 
+.npm
