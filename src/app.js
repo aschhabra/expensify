@@ -13,22 +13,22 @@ const element=<div><p>This is boilerplat</p></div>;
 
 const store = configureStore();
 
-store.subscribe(()=>{
-  const state =store.getState();
-  const visibleExpesens=getVisibleExpense(state.expenses,state.filters);
-  console.log(visibleExpesens);
-  console.log(state.filters);  
-});
-const expenseOne=store.dispatch(addExpense({
-  description: 'Rent',
-  amount: 4500,
-  createdAt: 100
-}));
-const expenseTwo=store.dispatch(addExpense({
-  description: 'Grocery',
-  amount: 2100,
-  createdAt: 1000
-}));
+// store.subscribe(()=>{
+//   const state =store.getState();
+//   const visibleExpesens=getVisibleExpense(state.expenses,state.filters);
+//   console.log(visibleExpesens);
+//   console.log(state.filters);  
+// });
+// const expenseOne=store.dispatch(addExpense({
+//   description: 'Rent',
+//   amount: 4500,
+//   createdAt: 100
+// }));
+// const expenseTwo=store.dispatch(addExpense({
+//   description: 'Grocery',
+//   amount: 2100,
+//   createdAt: 1000
+// }));
 
 const jsx= (
   <Provider store={store}>
