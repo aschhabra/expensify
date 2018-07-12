@@ -2,12 +2,14 @@ import React from "react";
 import ReactDOM from 'react-dom';
 import {Provider} from "react-redux";
 import { BrowserRouter,Switch, Route, Link, NavLink} from 'react-router-dom';
-import "./styles/styles.scss";
-import "normalize.css/normalize.css";
 import AppRouter from "./routers/AppRouter";
 import configureStore from "./store/configureStore";
 import { addExpense } from "./actions/expenses";
 import getVisibleExpense from "./selectors/expenses";
+import "./styles/styles.scss";
+import "normalize.css/normalize.css";
+import 'react-dates/initialize';
+import "react-dates/lib/css/_datepicker.css"
 console.log('App.js is running!');
 const element=<div><p>This is boilerplat</p></div>;
 
