@@ -26,3 +26,7 @@ coverage
 
 # optional npm cache directory 
 .npm
+
+# env files
+.env.development
+.env.test
