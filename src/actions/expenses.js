@@ -69,3 +69,16 @@ export const startSetExpenses= () =>{
     
   };
 };
+export const startRemoveExpense= ({id}) =>{
+  return (dispatch) =>{
+    return database.ref(`expenses/${id}`)
+              .remove().then(()=>{
+        console.log(`Expense with id : {id} removed successfully`);
+        dispatch(removeExpense({id}));
+        
+    }).catch((error)=>{ 
+        console.log(`Remove of id: {id} failed`+error.message);
+    });
+    
+  };
+};
