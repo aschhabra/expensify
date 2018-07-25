@@ -4,7 +4,7 @@ import {Provider} from "react-redux";
 import { BrowserRouter,Switch, Route, Link, NavLink} from 'react-router-dom';
 import AppRouter from "./routers/AppRouter";
 import configureStore from "./store/configureStore";
-import { addExpense } from "./actions/expenses";
+import { addExpense,startSetExpenses } from "./actions/expenses";
 import getVisibleExpense from "./selectors/expenses";
 import 'react-dates/initialize';
 import "normalize.css/normalize.css";
@@ -40,4 +40,8 @@ const jsx= (
   </Provider>
 
 );
+ReactDOM.render(<p> Loading... </p>, document.getElementById('app'));
+store.dispatch(startSetExpenses()).then(()=>{
+
 ReactDOM.render(jsx, document.getElementById('app'));
+});
