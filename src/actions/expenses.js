@@ -82,3 +82,16 @@ export const startRemoveExpense= ({id}) =>{
     
   };
 };
+export const startEditExpense= (id,updates) =>{
+  return (dispatch) =>{
+    return database.ref(`expenses/${id}`)
+              .update(updates).then(()=>{
+        console.log(`Expense with id : {id} updated successfully`);
+        dispatch(editExpense(id,updates));
+        
+    }).catch((error)=>{ 
+        console.log(`Update of id: {id} failed`+error.message);
+    });
+    
+  };
+};
