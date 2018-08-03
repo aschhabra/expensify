@@ -2,14 +2,14 @@ import React from "react";
 import {shallow} from "enzyme";
 import toJSON from "enzyme-to-json";
 import ReactShallowRenderer from "react-test-renderer/shallow";
-import {Header} from "./Header";
+import {LoginPage} from "./LoginPage";
 
-let startLogout, wrapper;
+let startLogin, wrapper;
 beforeEach(() => {
-  startLogout = jest.fn();
-  wrapper = shallow(<Header startLogout={startLogout} />);
+  startLogin = jest.fn();
+  wrapper = shallow(<LoginPage startLogin={startLogin} />);
 });
-test ("should render Header Correctly",()=>{
+test ("should render Login button Correctly",()=>{
   expect(toJSON(wrapper)).toMatchSnapshot();
 //  expect(wrapper.find('h1').text()).toBe("Expensify");
 
@@ -18,9 +18,9 @@ test ("should render Header Correctly",()=>{
 //  expect(renderer.getRenderOutput()).toMatchSnapshot();
 });
 
-test("should call startLogout on button click",()=>{
+test("should call startLogin on button click",()=>{
   
 
    wrapper.find("button").simulate("click");
-   expect(startLogout).toHaveBeenCalled();
+   expect(startLogin).toHaveBeenCalled();
 });

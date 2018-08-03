@@ -2,15 +2,16 @@ import React from "react";
 import ReactDOM from 'react-dom';
 import {Provider} from "react-redux";
 import { BrowserRouter,Switch, Route, Link, NavLink} from 'react-router-dom';
-import AppRouter from "./routers/AppRouter";
+import AppRouter,{history} from "./routers/AppRouter";
 import configureStore from "./store/configureStore";
 import { addExpense,startSetExpenses } from "./actions/expenses";
+import { login,logout } from "./actions/auth";
 import getVisibleExpense from "./selectors/expenses";
 import 'react-dates/initialize';
 import "normalize.css/normalize.css";
 import "./styles/styles.scss";
 import "react-dates/lib/css/_datepicker.css"
-import "./firebase/firebase";
+import {firebase} from "./firebase/firebase";
 
 console.log('App.js is running!');
 const element=<div><p>This is boilerplat</p></div>;
@@ -40,8 +41,31 @@ const jsx= (
   </Provider>
 
 );
-ReactDOM.render(<p> Loading... </p>, document.getElementById('app'));
-store.dispatch(startSetExpenses()).then(()=>{
+let hasRendered=false;
+const renderApp= () =>{
+  if(!hasRendered){
+    ReactDOM.render(jsx, document.getElementById('app'));
+    hasRendered=true;
+  }
 
-ReactDOM.render(jsx, document.getElementById('app'));
+};
+
+ReactDOM.render(<p> Loading... </p>, document.getElementById('app'));
+
+firebase.auth().onAuthStateChanged((user)=>{
+  if(user){
+    console.log("login");
+    store.dispatch(login(user.uid));
+    store.dispatch(startSetExpenses()).then(()=>{
+      renderApp(); 
+      if(history.location.pathname==="/"){
+        history.push("/dashboard");
+      }
+    });
+  }else{
+    console.log("logout");
+    store.dispatch(logout());
+    renderApp(); 
+    history.push("/");
+  }
 });
