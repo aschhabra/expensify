@@ -5,7 +5,6 @@ import {SingleDatePicker} from "react-dates";
 
 const now = moment();
 
-console.log(now.format('MMM do YYYY'));
 class ExpenseForm extends React.Component{ 
     constructor(props){
       super(props); 
@@ -41,14 +40,11 @@ class ExpenseForm extends React.Component{
       this.setState(()=>({calenderFocused:focused}));
     }
     onSubmit = (e)=>{
-      console.log("onSubmit");
       e.preventDefault();
       if(!this.state.description || !this.state.amount){
         this.setState(()=>({error: "Please provide description and ammount"}));
       }else{
-      console.log("notErroronSubmit");
         this.setState(()=>({error:''}));
-      console.log("notErroronSubmit1");
         this.props.onSubmit({
           description:this.state.description,
           amount:parseFloat(this.state.amount,10)*100,
@@ -59,17 +55,18 @@ class ExpenseForm extends React.Component{
     }
   render(){
     return(
-      <div>
-        ExpenseForm
-        <form onSubmit={this.onSubmit}>
+        <form className="form" onSubmit={this.onSubmit}>
+          {this.state.error && <p className="form__error" >{this.state.error}</p>}   
           <input
             type="text"
+            className="text-input"
             placeholder="Description"
             autofocus
             value={this.state.description}
             onChange={this.onDescriptionChange}
           />
           <input type="text"
+            className="text-input"
             placeholder="Amount"
             value={this.state.amount}
             onChange={this.onAmountChange}/>
@@ -83,13 +80,15 @@ class ExpenseForm extends React.Component{
           />
           <textarea 
             placeholder="Add a note"
+            className="textarea"
             value={this.state.note}
             onChange={this.onNoteChange}>
       
           </textarea>
-          <button>Add Expense</button>
+          <div>
+          <button className="button">Add Expense</button>
+          </div>
         </form>
-      </div>
     );
   }
 

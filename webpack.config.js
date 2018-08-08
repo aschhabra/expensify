@@ -1,12 +1,12 @@
 const path=require('path');
 const webpack=require("webpack");
 const ExtractTextPlugin=require("extract-text-webpack-plugin");
-process.env.NODE_ENV = process.env.NODE_ENV || "developmenet";
+process.env.NODE_ENV = process.env.NODE_ENV || "development";
 
 if(process.env.NODE_ENV=== "test"){
   require("dotenv").config({path:".env.test"});
 
-}else if(process.env.NODE_ENV === "developmenet"){
+}else if(process.env.NODE_ENV === "development"){
 
   require("dotenv").config({path:".env.development"});
 }
@@ -16,7 +16,7 @@ module.exports=(env)=> {
   const CSSExtract=new ExtractTextPlugin("styles.css");
 
   return {
-    entry:'./src/app.js',
+    entry:["babel-polyfill",'./src/app.js'],
     output:{
       path:path.join(__dirname,'public',"dist"),
       filename:'bundle.js'
@@ -58,7 +58,7 @@ module.exports=(env)=> {
         "process.env.FIREBASE_MESSAGING_SENDER_ID":JSON.stringify(process.env.FIREBASE_MESSAGING_SENDER_ID)
       })
     ],
-    devtool: isProduction ? "source-map": 'cheap-module-eval-source-map',
+    devtool: isProduction ? "source-map": 'inline-source-map',
     devServer:{
       contentBase: path.join(__dirname,'public'),
       historyApiFallback: true,

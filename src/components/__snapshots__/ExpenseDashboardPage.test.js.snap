@@ -2,9 +2,6 @@
 
 exports[`test should render ExpenseList with expenses 1`] = `
 <div>
-  <p>
-     This is form dashboard
-  </p>
   <Connect(ExpensesSummary) />
   <Connect(ExpenseListFilters) />
   <Connect(ExpenseList) />
