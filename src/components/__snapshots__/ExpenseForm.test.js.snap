@@ -118,7 +118,7 @@ exports[`test set description in the input change 1`] = `
     <button
       className="button"
     >
-      Add Expense
+      Save Expense
     </button>
   </div>
 </form>
@@ -242,7 +242,7 @@ exports[`test should render ExpenseForm 1`] = `
     <button
       className="button"
     >
-      Add Expense
+      Save Expense
     </button>
   </div>
 </form>
@@ -366,7 +366,7 @@ exports[`test should render ExpenseForm with data 1`] = `
     <button
       className="button"
     >
-      Add Expense
+      Save Expense
     </button>
   </div>
 </form>
@@ -490,7 +490,7 @@ exports[`test should render ExpenseForm with invalid submission data 1`] = `
     <button
       className="button"
     >
-      Add Expense
+      Save Expense
     </button>
   </div>
 </form>
@@ -619,7 +619,7 @@ exports[`test should render ExpenseForm with simulate submission data 1`] = `
     <button
       className="button"
     >
-      Add Expense
+      Save Expense
     </button>
   </div>
 </form>
